@@ -4,6 +4,7 @@
 
 # Home page
 GET     /                           controllers.Application.index()
+GET     /crossdomain.xml            controllers.Assets.at(path="/public", file="/crossdomain.xml")
 GET     /login                      controllers.Application.login(username:String?=null, password:String?=null)
 GET     /location                   controllers.Application.location(latitude:String?=null, longitude:String?=null, userid:Integer?=null) 
 

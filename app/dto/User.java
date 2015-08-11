@@ -1,23 +1,29 @@
 package dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.util.Date;
 
 import play.twirl.api.Content;
 import util.Util;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.core.JsonProcessingException;
 
-public class User implements Content{
+public class User implements Content {
 	String username;
 	String password;
 	Integer userid;
 	String latitude;
 	String longitude;
-	
-	
+	Date updatedat;
 
-	
+	public Date getUpdatedat() {
+		return updatedat;
+	}
+
+	public void setUpdatedat(Date updatedat) {
+		this.updatedat = updatedat;
+	}
+
 	public String getUsername() {
 		return username;
 	}
@@ -42,7 +48,7 @@ public class User implements Content{
 	public void setUserid(Integer userid) {
 		this.userid = userid;
 	}
-	
+
 	public String getLatitude() {
 		return latitude;
 	}
@@ -65,7 +71,7 @@ public class User implements Content{
 		try {
 			json = Util.jsonmapper.writeValueAsString(this);
 		} catch (JsonProcessingException e) {
-			
+
 			e.printStackTrace();
 		}
 		return json;
@@ -73,10 +79,8 @@ public class User implements Content{
 
 	@Override
 	public String contentType() {
-		
+
 		return "application/json";
 	}
-	
-	
 
 }
