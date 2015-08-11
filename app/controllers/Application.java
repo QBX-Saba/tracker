@@ -21,7 +21,11 @@ public class Application extends Controller {
     }
     
     public Result location(String latitude, String longitude, Integer userid) {
-        return ok(service.location(latitude, longitude, userid));
+        try {
+			return ok(service.location(latitude, longitude, userid));
+		} catch (Exception e) {
+			return badRequest(e.getLocalizedMessage());
+		}
     }
 
 }

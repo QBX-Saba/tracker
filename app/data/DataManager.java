@@ -53,7 +53,7 @@ public class DataManager {
 		index.put(user.getUsername(), user.getUserid());
 
 		user = new User();
-		user.setUserid(2);
+		user.setUserid(4);
 		user.setUsername("userfour");
 		user.setPassword("userfour");
 		user.setLatitude("0.0");
@@ -97,15 +97,20 @@ public class DataManager {
 		return user;
 	}
 
-	public void update(Integer userid, String latitude, String longitude) {
+	public User update(Integer userid, String latitude, String longitude) {
+		User user = null;
 		try {
-			usersMap.get(userid).setLatitude(latitude);
-			usersMap.get(userid).setLongitude(longitude);
-			usersMap.get(userid).setUpdatedat(Calendar.getInstance().getTime());
+			user = usersMap.get(userid);
+			if (user != null) {
+				user.setLatitude(latitude);
+				user.setLongitude(longitude);
+				user.setUpdatedat(Calendar.getInstance().getTime());
+			}
 		} catch (Exception exp) {
 			exp.printStackTrace();
 			throw exp;
 		}
+		return user;
 
 	}
 
