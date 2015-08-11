@@ -1,8 +1,8 @@
 package controllers;
 
+import dto.User;
 import play.*;
 import play.mvc.*;
-
 import views.html.*;
 
 public class Application extends Controller {
@@ -13,7 +13,11 @@ public class Application extends Controller {
     }
     
     public Result login(String username, String password) {
-        return ok(service.login(username, password));
+    	User user = service.login(username, password);
+    	if(user==null){
+    		return notFound("username or password incorrect");
+    	}
+        return ok(user);
     }
     
     public Result location(String latitude, String longitude, Integer userid) {

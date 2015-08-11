@@ -16,7 +16,8 @@ public class Service {
 	}
 
 	public User login(String username, String password) {
-		User user = new User();
+		User user = dataManager.get(username, password);
+		
 		return user;
 	}
 
