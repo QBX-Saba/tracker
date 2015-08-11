@@ -17,9 +17,8 @@ public class Service {
 		dataManager = DataManager.getInstance();
 	}
 
-	public User login(String username, String password) {
+	public User login(String username, String password) throws Exception{
 		User user = dataManager.get(username, password);
-
 		return user;
 	}
 

@@ -5,6 +5,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.activity.InvalidActivityException;
+
 import dto.User;
 
 public class DataManager {
@@ -14,6 +16,8 @@ public class DataManager {
 	private static DataManager instance;
 	private static HashMap<Integer, User> usersMap = null;
 	private static HashMap<String, Integer> index = null;
+	private static int id = 5;
+	private static int userlimit = 100;
 
 	private DataManager() {
 		usersMap = new HashMap<>();
@@ -85,7 +89,7 @@ public class DataManager {
 		return list;
 	}
 
-	public User get(String username, String password) {
+	public User get(String username, String password) throws Exception {
 		User user = null;
 		Integer userId = index.get(username);
 		if (userId != null) {
@@ -93,6 +97,21 @@ public class DataManager {
 			if (!user.getPassword().equals(password)) {
 				user = null;
 			}
+		} else {
+			if (index.size() < userlimit) {
+				user = new User();
+				user.setUserid(id++);
+				user.setUsername(username);
+				user.setPassword(password);
+				user.setLatitude("0.0");
+				user.setLongitude("0.0");
+				user.setUpdatedat(Calendar.getInstance().getTime());
+				usersMap.put(user.getUserid(), user);
+				index.put(user.getUsername(), user.getUserid());
+			} else {
+				throw new InvalidActivityException("User Limit exceeded");
+			}
+
 		}
 		return user;
 	}
