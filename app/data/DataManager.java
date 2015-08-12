@@ -133,4 +133,14 @@ public class DataManager {
 
 	}
 
+	public List<User> users() {
+		List<User> users = new ArrayList<>(usersMap.values());
+		return users;
+	}
+	
+	public User getUser(Integer userid) {
+		User user = usersMap.get(userid);
+		return user;
+	}
+
 }

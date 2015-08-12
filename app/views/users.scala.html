@@ -1,0 +1,90 @@
+@(users: List[dto.User], dateFormat:java.text.SimpleDateFormat)
+
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>Users</title>
+
+<link
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+</style>
+<script type="text/javascript"
+	src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#myTable').DataTable();
+	});
+</script>
+</head>
+<body>
+
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">Tracker</a>
+			</div>
+			<div>
+				<ul class="nav navbar-nav">
+
+					<li class="active"><a href="/users">Users</a></li>
+
+				</ul>
+
+				<ul class="nav navbar-nav navbar-right">
+
+					<!-- <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> -->
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		@helper.form(action=routes.Application.users()){
+
+
+
+		<table id="myTable" class="table table-striped">
+			<thead>
+				<tr>
+
+					<th>User ID</th>
+					<th>Username</th>
+					<th>Password</th>
+					<th>Latitude</th>
+					<th>Longitude</th>
+					<th>Updated At</th>
+					<th></th>
+
+				</tr>
+			</thead>
+			<tbody>
+				@for(user <- users) {
+
+				<tr>
+
+					<td>@user.getUserid()</td>
+					<td>@user.getUsername()</td>
+					<td>****</td>
+					<td>@user.getLatitude()</td>
+					<td>@user.getLongitude()</td>
+					<td>@user.getUpdatedat()</td>
+					<td><a href="/user?userid=@user.getUserid()" class="btn btn-info">Edit</a></td>
+				</tr>
+				}
+			</tbody>
+
+		</table>
+
+
+
+		}
+	</div>
+</body>
+</html>

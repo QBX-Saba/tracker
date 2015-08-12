@@ -1,6 +1,7 @@
 package controllers;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.activity.InvalidActivityException;
 
@@ -42,5 +43,20 @@ public class Service {
 			instance = new Service();
 		}
 		return instance;
+	}
+
+	public List<User> users() {
+		return dataManager.users();
+	}
+
+	public User user(Integer userid) {
+	
+		return dataManager.getUser(userid);
+	}
+
+	public void updateUser(Integer userid, String username, String latitude,
+			String longitude) {
+		User user = dataManager.update(userid, latitude, longitude);
+		
 	}
 }
