@@ -17,7 +17,7 @@ import play.data.validation.*;
 import play.data.validation.Constraints.Required;
 
 @Entity
-@Table(name="user")
+@Table(name="User")
 public class User implements Content {
 	
 	String username;
