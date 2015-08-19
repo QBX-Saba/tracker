@@ -89,7 +89,7 @@ public class DataManagerDS {
 
 		list = JPA
 				.em()
-				.createNativeQuery("select * from User where useri=" + userid,
+				.createNativeQuery("select * from User where userid=" + userid,
 						User.class).getResultList();
 
 		if (list != null && list.size() > 0) {
