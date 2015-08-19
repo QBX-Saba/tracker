@@ -56,7 +56,7 @@ public class DataManagerDS {
 		return user;
 	}
 
-	public User update(Integer userid, String latitude, String longitude, String height) {
+	public User update(Integer userid, String latitude, String longitude, String height) { 
 		User user = new User();
 		user.setUserid(userid);
 		

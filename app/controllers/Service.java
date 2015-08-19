@@ -57,7 +57,7 @@ public class Service {
 
 	public void updateUser(Integer userid, String username, String latitude,
 			String longitude, String height) {
-		User user = dataManager.update(userid, latitude, longitude);
+		User user = dataManager.update(userid, latitude, longitude, height);
 		
 	}
 }
