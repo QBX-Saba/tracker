@@ -25,10 +25,25 @@ public class User implements Content {
 	Integer userid;
 	String latitude;
 	String longitude;
+	String height;
 	Date updatedat;
 
 	
 	public User(){}
+	
+	
+	@Column(name="height")
+	public String getHeight() {
+		return height;
+	}
+
+
+
+	public void setHeight(String height) {
+		this.height = height;
+	}
+
+
 
 	@Column(name="updatedat")
 	public Date getUpdatedat() {

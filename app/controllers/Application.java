@@ -25,8 +25,8 @@ public class Application extends Controller {
 	}
 	
 	@play.db.jpa.Transactional
-	public static Result updateuser(Integer userid, String username, String password, String latitude, String longitude) {
-		service.updateUser(userid, username, latitude, longitude);
+	public static Result updateuser(Integer userid, String username, String password, String latitude, String longitude, String height) {
+		service.updateUser(userid, username, latitude, longitude, height);
 		return redirect("/users");
 	}
 	

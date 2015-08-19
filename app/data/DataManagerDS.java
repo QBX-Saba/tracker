@@ -56,7 +56,7 @@ public class DataManagerDS {
 		return user;
 	}
 
-	public User update(Integer userid, String latitude, String longitude) {
+	public User update(Integer userid, String latitude, String longitude, String height) {
 		User user = new User();
 		user.setUserid(userid);
 		
@@ -64,6 +64,7 @@ public class DataManagerDS {
 				.createNativeQuery(
 						"UPDATE User set latitude = '" + latitude
 								+ "' , longitude = '" + longitude
+								+ "' , height = '" + height
 								+ "', updatedat=now() where userid = " + userid,
 						User.class).executeUpdate();
 		return user;
