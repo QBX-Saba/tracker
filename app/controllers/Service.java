@@ -6,16 +6,17 @@ import java.util.List;
 import javax.activity.InvalidActivityException;
 
 import data.DataManager;
+import data.DataManagerDS;
 import dto.User;
 import dto.Users;
 
 public class Service {
 
 	private static Service instance;
-	private static DataManager dataManager;
+	private static DataManagerDS dataManager;
 
 	private Service() {
-		dataManager = DataManager.getInstance();
+		dataManager = DataManagerDS.getInstance();
 	}
 
 	public User login(String username, String password) throws Exception{

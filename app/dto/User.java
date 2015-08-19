@@ -5,17 +5,32 @@ import java.util.Date;
 import play.twirl.api.Content;
 import util.Util;
 
+import java.util.*;
+
+import javax.persistence.*;
+
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
+import play.data.format.*;
+import play.data.validation.*;
+import play.data.validation.Constraints.Required;
+
+@Entity
+@Table(name="user")
 public class User implements Content {
+	
 	String username;
-	String password;
+	String password;	
 	Integer userid;
 	String latitude;
 	String longitude;
 	Date updatedat;
 
+	
+	public User(){}
+
+	@Column(name="updatedat")
 	public Date getUpdatedat() {
 		return updatedat;
 	}
@@ -24,6 +39,7 @@ public class User implements Content {
 		this.updatedat = updatedat;
 	}
 
+	@Column(name="username")
 	public String getUsername() {
 		return username;
 	}
@@ -33,6 +49,7 @@ public class User implements Content {
 	}
 
 	@JsonIgnore
+	@Column(name="password")
 	public String getPassword() {
 		return password;
 	}
@@ -41,6 +58,8 @@ public class User implements Content {
 		this.password = password;
 	}
 
+	@Id
+	@GeneratedValue
 	public Integer getUserid() {
 		return userid;
 	}
@@ -49,6 +68,7 @@ public class User implements Content {
 		this.userid = userid;
 	}
 
+	@Column(name="latitude")
 	public String getLatitude() {
 		return latitude;
 	}
@@ -57,6 +77,7 @@ public class User implements Content {
 		this.latitude = latitude;
 	}
 
+	@Column(name="longitude")
 	public String getLongitude() {
 		return longitude;
 	}
@@ -65,6 +86,7 @@ public class User implements Content {
 		this.longitude = longitude;
 	}
 
+	@Transient
 	@Override
 	public String body() {
 		String json = null;
@@ -77,6 +99,7 @@ public class User implements Content {
 		return json;
 	}
 
+	@Transient
 	@Override
 	public String contentType() {
 

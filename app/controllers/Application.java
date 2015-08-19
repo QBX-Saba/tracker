@@ -10,29 +10,34 @@ import views.html.*;
 
 public class Application extends Controller {
 
-	Service service = Service.getInstance();
+	private static Service service = Service.getInstance();
 
-	public Result index() {
+	@play.db.jpa.Transactional
+	public static Result index() {
 		return ok(index.render("Tracker"));
 	}
 	
-	public Result users() {
+	@play.db.jpa.Transactional
+	public static Result users() {
 		List<User> usersList = service.users();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
 		return ok(users.render(usersList, simpleDateFormat));
 	}
 	
-	public Result updateuser(Integer userid, String username, String password, String latitude, String longitude) {
+	@play.db.jpa.Transactional
+	public static Result updateuser(Integer userid, String username, String password, String latitude, String longitude) {
 		service.updateUser(userid, username, latitude, longitude);
 		return redirect("/users");
 	}
 	
-	public Result user(Integer userid) {
+	@play.db.jpa.Transactional
+	public static Result user(Integer userid) {
 		User user = service.user(userid);
 		return ok(edituser.render(user));
 	}
 
-	public Result login(String username, String password) {
+	@play.db.jpa.Transactional
+	public static Result login(String username, String password) {
 		User user = null;
 		try {
 			user = service.login(username, password);
@@ -48,7 +53,8 @@ public class Application extends Controller {
 		return ok(user);
 	}
 
-	public Result location(String latitude, String longitude, Integer userid) {
+	@play.db.jpa.Transactional
+	public static Result location(String latitude, String longitude, Integer userid) {
 		try {
 			return ok(service.location(latitude, longitude, userid));
 		} catch (Exception e) {
