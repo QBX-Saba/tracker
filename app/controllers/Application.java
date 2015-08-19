@@ -54,9 +54,9 @@ public class Application extends Controller {
 	}
 
 	@play.db.jpa.Transactional
-	public static Result location(String latitude, String longitude, Integer userid) {
+	public static Result location(String latitude, String longitude, String height, Integer userid) {
 		try {
-			return ok(service.location(latitude, longitude, userid));
+			return ok(service.location(latitude, longitude, height, userid));
 		} catch (Exception e) {
 			return badRequest(e.getLocalizedMessage());
 		}

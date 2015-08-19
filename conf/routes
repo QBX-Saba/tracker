@@ -9,7 +9,7 @@ GET     /user                      controllers.Application.user(userid:Integer?=
 GET     /updateuser                      controllers.Application.updateuser(userid:Integer?=null, username:String?=null, password:String?=null, latitude:String?=null, longitude:String?=null, height:String?=null)
 GET     /crossdomain.xml            controllers.Assets.at(path="/public", file="/crossdomain.xml")
 GET     /login                      controllers.Application.login(username:String?=null, password:String?=null)
-GET     /location                   controllers.Application.location(latitude:String?=null, longitude:String?=null, userid:Integer?=null) 
+GET     /location                   controllers.Application.location(latitude:String?=null, longitude:String?=null,height:String?=null, userid:Integer?=null) 
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
