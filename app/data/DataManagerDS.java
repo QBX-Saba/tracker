@@ -43,7 +43,9 @@ public class DataManagerDS {
 	}
 
 	public User get(String username, String password) throws Exception {
-		User user = null;
+		User user = new User();
+		user.setUsername(username);
+		user.setPassword(password);
 
 		List<User> list = JPA
 				.em()
@@ -53,6 +55,8 @@ public class DataManagerDS {
 						User.class).getResultList();
 		if (list != null & list.size() > 0) {
 			user = list.get(0);
+		}else{
+			JPA.em().persist(user);
 		}
 		return user;
 	}
