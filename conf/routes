@@ -3,6 +3,7 @@
 # ~~~~
 
 # Home page
+POST 	/wth							controllers.Application.post()
 GET     /                           controllers.Application.index()
 GET     /users                      controllers.Application.users()
 GET     /user                      controllers.Application.user(userid:Integer?=null)

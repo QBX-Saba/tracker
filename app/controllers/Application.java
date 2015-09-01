@@ -13,6 +13,14 @@ public class Application extends Controller {
 	private static Service service = Service.getInstance();
 
 	@play.db.jpa.Transactional
+	public static Result post() {
+		System.out.println(request().body().asJson()+"");
+		return ok(request().body().asJson()+"");
+//		return ok(index.render("Tracker"));
+	}
+
+	
+	@play.db.jpa.Transactional
 	public static Result index() {
 		return ok(index.render("Tracker"));
 	}
